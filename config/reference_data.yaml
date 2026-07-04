@@ -1,0 +1,47 @@
+occupations:
+  - Farmer
+  - Teacher
+  - Engineer
+  - Student
+  - Business Owner
+  - Government Employee
+  - Healthcare Worker
+  - Retail Worker
+  - Driver
+  - Security Guard
+  - IT Professional
+  - Telecom Technician
+
+kyc_levels:
+  - L1
+  - L2
+  - L3
+
+wallet_status:
+  - ACTIVE
+  - DORMANT
+  - BLOCKED
+
+risk_bands:
+  - LOW
+  - MEDIUM
+  - HIGH
+
+merchant_categories:
+  - Grocery
+  - Fuel
+  - Pharmacy
+  - Restaurant
+  - Electronics
+  - Clothing
+  - Telecom
+  - Agriculture
+
+device_types:
+  - Android
+  - iPhone
+  - Feature Phone
+
+sim_types:
+  - Physical SIM
+  - eSIM

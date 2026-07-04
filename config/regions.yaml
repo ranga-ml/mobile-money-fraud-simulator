@@ -1,0 +1,61 @@
+country:
+
+  name: SubexLand
+
+  currency: SLC
+
+  population: 12000000
+
+  mobile_money_users: 4200000
+
+regions:
+
+  - name: Capital City
+
+    urban_ratio: 0.98
+
+    income_multiplier: 2.5
+
+    dealer_density: 2.4
+
+    fraud_risk: 1.4
+
+  - name: North
+
+    urban_ratio: 0.40
+
+    income_multiplier: 1.0
+
+    dealer_density: 0.8
+
+    fraud_risk: 0.9
+
+  - name: South
+
+    urban_ratio: 0.55
+
+    income_multiplier: 1.2
+
+    dealer_density: 1.1
+
+    fraud_risk: 0.8
+
+  - name: East
+
+    urban_ratio: 0.32
+
+    income_multiplier: 0.85
+
+    dealer_density: 0.75
+
+    fraud_risk: 1.1
+
+  - name: West
+
+    urban_ratio: 0.62
+
+    income_multiplier: 1.4
+
+    dealer_density: 1.5
+
+    fraud_risk: 0.95

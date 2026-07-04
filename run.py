@@ -1,42 +1,18 @@
 """
-Entry point for the Mobile Money Fraud Simulator.
+Entry point for the Mobile Money Fraud Analytics Accelerator.
 """
 
-from src.common.config import ConfigManager
-import yaml
-
-
-def load_config():
-    """Load the YAML configuration file."""
-
-    config_path = Path("config/config.yaml")
-
-    with open(config_path, "r", encoding="utf-8") as file:
-        return yaml.safe_load(file)
+from src.simulator.context import SimulationContext
+from src.simulator.engine import SimulationEngine
 
 
 def main():
 
-    config = ConfigManager().get()
+    context = SimulationContext()
 
-    print("=" * 50)
-    print(f" {config['project']['name']}")
-    print("=" * 50)
+    engine = SimulationEngine(context)
 
-    print()
-
-    print(f"Version             : {config['project']['version']}")
-    print(f"Author              : {config['project']['author']}")
-
-    print()
-
-    print(f"Simulation Days     : {config['simulation']['days']}")
-    print(f"Customers           : {config['population']['customers']:,}")
-    print(f"Dealers             : {config['population']['dealers']:,}")
-    print(f"Merchants           : {config['population']['merchants']:,}")
-
-    print()
-    print("Configuration loaded successfully.")
+    engine.run()
 
 
 if __name__ == "__main__":
