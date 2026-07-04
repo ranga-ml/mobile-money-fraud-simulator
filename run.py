@@ -2,7 +2,7 @@
 Entry point for the Mobile Money Fraud Simulator.
 """
 
-from pathlib import Path
+from src.common.config import ConfigManager
 import yaml
 
 
@@ -17,7 +17,7 @@ def load_config():
 
 def main():
 
-    config = load_config()
+    config = ConfigManager().get()
 
     print("=" * 50)
     print(f" {config['project']['name']}")
