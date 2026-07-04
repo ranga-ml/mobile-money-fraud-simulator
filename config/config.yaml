@@ -1,11 +1,30 @@
-random_seed: 2026
-simulation_days: 365
-customers: 10000
-dealers: 100
-merchants: 1000
-fraud_rates:
+project:
+  name: Mobile Money Fraud Simulator
+  version: 0.1.0
+  author: Ranganath Acharya
+
+simulation:
+  random_seed: 2026
+  days: 365
+
+population:
+  customers: 100000
+  dealers: 500
+  merchants: 4000
+
+output:
+  csv: true
+  parquet: true
+  overwrite: true
+
+fraud:
+  enabled: true
   ghost_customer: 0.005
-  circular_transactions: 0.002
-  dealer_collusion: 0.001
   referral_abuse: 0.003
+  dealer_collusion: 0.001
   dealer_ato: 0.0005
+
+telecom:
+  esim_swap_rate: 0.0002
+  sim_swap_rate: 0.001
+  pin_reset_rate: 0.005
