@@ -1,0 +1,12 @@
+pandas
+numpy
+faker
+pyyaml
+networkx
+pyarrow
+polars
+pytest
+loguru
+scikit-learn
+xgboost
+lightgbm
