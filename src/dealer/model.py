@@ -33,4 +33,16 @@ class Dealer:
 
     customer_capacity: int
 
+    current_customer_count: int = 0
+
     merchant_capacity: int
+
+    current_merchant_count: int = 0
+
+
+    @property
+    def customer_capacity_remaining(self) -> int:
+        return (
+            self.customer_capacity
+            - self.current_customer_count
+        )
