@@ -8,9 +8,18 @@ simulation:
   days: 365
 
 population:
+
   customers: 100000
-  dealers: 500
-  merchants: 4000
+
+capacity:
+
+  customers_per_agent: 800
+
+  agents_per_master: 20
+
+  masters_per_super: 20
+
+  merchants_per_agent: 25
 
 output:
   csv: true
