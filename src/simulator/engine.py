@@ -11,6 +11,8 @@ import pandas as pd
 
 from src.customer.generator import CustomerGenerator
 
+from src.dealer.generator import DealerGenerator
+
 
 class SimulationEngine:
     """Main orchestration class."""
@@ -33,9 +35,15 @@ class SimulationEngine:
 
         self.print_summary()
 
+        dealers = self.generate_dealers()
+
         customers = self.generate_customers()
 
+        self.export_dealers(dealers)
+
         self.export_customers(customers)
+
+        self.print_registry_summary()
 
         self.logger.info("=" * 70)
         self.logger.info("Simulation completed successfully.")
@@ -60,9 +68,27 @@ class SimulationEngine:
 
         customers = generator.generate(count=count)
 
+        for customer in customers:
+            self.context.registry.register_customer(customer)
+
         self.logger.info(f"{len(customers):,} customers generated.")
 
         return customers
+
+    def generate_dealers(self):
+
+        self.logger.info("Generating dealer network...")
+
+        generator = DealerGenerator(self.context)
+
+        dealers = generator.generate()
+
+        for dealer in dealers:
+            self.context.registry.register_dealer(dealer)
+
+        self.logger.info(f"{len(dealers):,} dealers generated.")
+
+        return dealers
 
     def export_customers(self, customers):
 
@@ -83,3 +109,36 @@ class SimulationEngine:
         )
 
         self.logger.info(f"Customer file written to {output_file}")
+
+    def export_dealers(self, dealers):
+
+        output_folder = Path("outputs")
+        output_folder.mkdir(exist_ok=True)
+
+        df = pd.DataFrame(
+            [asdict(dealer) for dealer in dealers]
+        )
+
+        output_file = output_folder / "dealer_master.csv"
+
+        df.to_csv(
+            output_file,
+            index=False,
+        )
+
+        self.logger.info(f"Dealer file written to {output_file}")
+
+    def print_registry_summary(self):
+
+        stats = self.context.registry.summary()
+
+        self.logger.info("=" * 70)
+        self.logger.info("Registry Summary")
+        self.logger.info("=" * 70)
+
+        self.logger.info(f"Dealers   : {stats['dealers']:,}")
+        self.logger.info(f"Customers : {stats['customers']:,}")
+        self.logger.info(f"Merchants : {stats['merchants']:,}")
+        self.logger.info(f"Wallets   : {stats['wallets']:,}")
+        self.logger.info(f"Devices   : {stats['devices']:,}")
+        self.logger.info(f"SIMs      : {stats['sims']:,}")

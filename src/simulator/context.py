@@ -11,7 +11,7 @@ from src.common.config import ConfigManager
 from src.common.logger import Logger
 from src.common.reference_data import ReferenceData
 from src.simulator.loader import CountryLoader
-
+from src.registry.registry import EntityRegistry
 
 @dataclass(slots=True)
 class SimulationContext:
@@ -29,7 +29,11 @@ class SimulationContext:
 
     random: Random = field(init=False)
 
+    registry: EntityRegistry = field(init=False)
+
     def __post_init__(self):
+
+        self.registry = EntityRegistry()
 
         self.config = ConfigManager().get()
 
